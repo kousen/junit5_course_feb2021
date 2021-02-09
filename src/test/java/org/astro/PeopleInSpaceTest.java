@@ -1,10 +1,21 @@
 package org.astro;
 
+import org.junit.jupiter.api.Assumptions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.net.InetAddress;
+
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
 class PeopleInSpaceTest {
+
+    @BeforeEach
+    void setUp() throws Exception {
+        assumeTrue(InetAddress.getByName("api.open-notify.org").isReachable(2000),
+                "api.open-notify.org is down");
+    }
 
     @Test
     void getAstronautsAsString() throws Exception {
